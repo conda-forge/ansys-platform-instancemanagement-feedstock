@@ -6,21 +6,21 @@ package:
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/ansys_platform_instancemanagement-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/ansys_platform_instancemanagement-{{ version }}.tar.gz
   sha256: 940d7a27d26e4c6d1228da5e139948fc4b1388f7cc7c3f5356b2b3b41e8d7c48
 
 build:
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
-  number: 0
+  number: 1
 
 requirements:
   host:
-    - python >=3.8
+    - python {{ python_min }}
     - flit-core >=3.2,<4
     - pip
   run:
-    - python >=3.8
+    - python >={{ python_min }}
     - importlib-metadata >=4.0
     - ansys-api-platform-instancemanagement >=1.0,<2.dev0
 
@@ -31,6 +31,7 @@ test:
     - pip check
   requires:
     - pip
+    - python {{ python_min }}
 
 about:
   summary: A Python wrapper for Ansys platform instancemanagement
