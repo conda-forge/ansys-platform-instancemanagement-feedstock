@@ -22,7 +22,8 @@ requirements:
   run:
     - python >={{ python_min }}
     - importlib-metadata >=4.0
-    - ansys-api-platform-instancemanagement >=1.0,<2.dev0
+    - ansys-api-platform-instancemanagement >=1.2,<2.dev0
+    - ansys-tools-common >=0.5,<1
 
 test:
   imports:
