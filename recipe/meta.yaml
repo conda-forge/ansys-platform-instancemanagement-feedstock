@@ -1,18 +1,18 @@
 {% set name = "ansys-platform-instancemanagement" %}
-{% set version = "1.1.2" %}
+{% set version = "1.2.0" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
-  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/ansys_platform_instancemanagement-{{ version }}.tar.gz
-  sha256: 940d7a27d26e4c6d1228da5e139948fc4b1388f7cc7c3f5356b2b3b41e8d7c48
+  url: https://files.pythonhosted.org/packages/source/{{ name[0] }}/{{ name }}/ansys_platform_instancemanagement-{{ version }}.tar.gz
+  sha256: dcff3b759bec05a8d0029d9e74b97b469738739dc8444568fbd20ca31a9b37e0
 
 build:
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
-  number: 1
+  number: 0
 
 requirements:
   host:
@@ -22,7 +22,8 @@ requirements:
   run:
     - python >={{ python_min }}
     - importlib-metadata >=4.0
-    - ansys-api-platform-instancemanagement >=1.0,<2.dev0
+    - ansys-api-platform-instancemanagement >=1.2,<2.dev0
+    - ansys-tools-common >=0.5,<1
 
 test:
   imports:
